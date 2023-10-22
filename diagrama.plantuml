@@ -1,0 +1,139 @@
+@startuml
+class Chica {
+  nivelDeFelicidad
+	emocionDominante
+	edad
+	pensamientoActual
+	recuerdosDelDia
+	pensamientosCentrales
+	procesosMentales
+	memoriaALargoPlaz
+
+	vivirUnEvento(unaDescripcion)
+	asentar(unRecuerdo)
+	estaFeliz()
+	centralizar(unRecuerdo)
+	entristecerEnProporcion(unPorcentaje)
+	recuerdosRecientes()
+	pensamientosCentralesDificilesDeExplicar()
+	niega(unRecuerdo)
+	dormir()
+	asentarRecuerdos(unosRecuerdos)
+	recuerdosDelDiaQueIncluyen(unaPalabra)
+	memorizar(unosRecuerdos)
+	profundizarRecuerdos()
+	recuerdosMemorizables()
+	recuerdosNoCentralesDelDia()
+	estaDesequilibrada()
+	estaRecordandoElPasado()
+	tuvoDiaMonotono()
+	emocionDelDia()
+	producirDesequilibrioHormonal()
+	pensamientosCentralesPorAntiguedad()
+	alegrar(unaCantidad)
+	liberarRecuerdosDelDia()
+	rememorar()
+	recuerdosViejos()
+	cuantasVecesRecuerda(unRecuerdo)
+	tieneUnDejaVu()
+}
+
+class Evento {
+	descripcion
+	fecha
+	emocionDominante
+
+	asentarEn(unaChica)
+	esDificilDeExplicar()
+	esAlegre()
+	incluye(unaPalabra)
+	esDeEmocion(unaEmocion)
+	esMasAntiguoQue(otroEvento)
+	pasoDespuesDe(unaFecha)
+	pasoHaceMasDeNAnios(unosAnios)
+}
+
+interface Emocion {
+	asentar(unRecuerdo, unaChica)
+	niega(unRecuerdo)
+  esAlegre()
+}
+
+object alegria {
+	asentar(unRecuerdo, unaChica)
+	niega(unRecuerdo)
+	esAlegre()
+}
+
+class EmocionCompuesta implements Emocion {
+  componentes
+
+	asentar(unRecuerdo, unaChica)
+	niega(unRecuerdo)
+  esAlegre()
+}
+
+class EmocionPasiva extends EmocionNoAlegre {
+  asentar(unRecuerdo, unaChica)
+  niega(unRecuerdo)
+}
+
+abstract class EmocionNoAlegre implements Emocion {
+  esAlegre()
+}
+
+object tristeza {
+	asentar(unRecuerdo, unaChica)
+	niega(unRecuerdo)
+}
+
+object asentamiento {
+	recuerdosAAsentar(unaChica)
+}
+
+class AsentamientoSelectivo extends ProcesoDeAsentamiento {
+  palabraClave
+
+	recuerdosAAsentar(unaChica)
+}
+
+object controlHormonal {
+	efectuarSobre(unaChica)
+}
+
+object liberacionDeRecuerdosDelDia {
+	efectuarSobre(unaChica)
+}
+
+abstract class ProcesoDeAsentamiento implements ProcesoMental {
+	efectuarSobre(unaChica)
+	{abstract} recuerdosAAsentar(unaChica)
+}
+
+object profundizacion {
+	efectuarSobre(unaChica)
+}
+
+object restauracionCognitiva {
+	efectuarSobre(unaChica)
+}
+
+interface ProcesoMental {
+  efectuarSobre(unaChica)
+}
+
+Chica -r-> Evento : pensamientoActual
+Chica -r-> "*" Evento : recuerdosDelDia
+Chica -r-> "*" Evento : pensamientosCentrales
+Chica -r-> "*" Evento : memoriaALargoPlazo
+Evento -r-> Emocion
+tristeza .u.|> Emocion
+alegria .u.|> Emocion
+EmocionCompuesta --> "*" Emocion : componentes
+Chica -l-> "*" ProcesoMental : procesosMentales
+asentamiento -u-|> ProcesoDeAsentamiento
+profundizacion .u.|> ProcesoMental
+restauracionCognitiva .u.|> ProcesoMental
+controlHormonal .u.|> ProcesoMental
+liberacionDeRecuerdosDelDia .u.|> ProcesoMental
+@enduml
