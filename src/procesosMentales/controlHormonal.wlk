@@ -1,5 +1,5 @@
 object controlHormonal {
-	method efectuarSobre(unaChica) {
+  method efectuarSobre(unaChica) {
     if (unaChica.estaDesequilibrada()) unaChica.producirDesequilibrioHormonal()
   }
 }

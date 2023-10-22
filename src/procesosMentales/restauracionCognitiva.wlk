@@ -1,5 +1,5 @@
 object restauracionCognitiva {
-	method efectuarSobre(unaChica) {
+  method efectuarSobre(unaChica) {
     unaChica.alegrar(100)
   }
 }

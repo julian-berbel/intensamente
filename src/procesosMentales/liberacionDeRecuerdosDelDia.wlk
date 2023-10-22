@@ -1,5 +1,5 @@
 object liberacionDeRecuerdosDelDia {
-	method efectuarSobre(unaChica) {
+  method efectuarSobre(unaChica) {
     unaChica.liberarRecuerdosDelDia()
   }
 }

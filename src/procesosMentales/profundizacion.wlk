@@ -1,5 +1,5 @@
 object profundizacion {
-	method efectuarSobre(unaChica) {
+  method efectuarSobre(unaChica) {
     unaChica.profundizarRecuerdos()
   }
 }

@@ -1,75 +1,75 @@
 @startuml
 class Chica {
   nivelDeFelicidad
-	emocionDominante
-	edad
-	pensamientoActual
-	recuerdosDelDia
-	pensamientosCentrales
-	procesosMentales
-	memoriaALargoPlaz
+  emocionDominante
+  edad
+  pensamientoActual
+  recuerdosDelDia
+  pensamientosCentrales
+  procesosMentales
+  memoriaALargoPlaz
 
-	vivirUnEvento(unaDescripcion)
-	asentar(unRecuerdo)
-	estaFeliz()
-	centralizar(unRecuerdo)
-	entristecerEnProporcion(unPorcentaje)
-	recuerdosRecientes()
-	pensamientosCentralesDificilesDeExplicar()
-	niega(unRecuerdo)
-	dormir()
-	asentarRecuerdos(unosRecuerdos)
-	recuerdosDelDiaQueIncluyen(unaPalabra)
-	memorizar(unosRecuerdos)
-	profundizarRecuerdos()
-	recuerdosMemorizables()
-	recuerdosNoCentralesDelDia()
-	estaDesequilibrada()
-	estaRecordandoElPasado()
-	tuvoDiaMonotono()
-	emocionDelDia()
-	producirDesequilibrioHormonal()
-	pensamientosCentralesPorAntiguedad()
-	alegrar(unaCantidad)
-	liberarRecuerdosDelDia()
-	rememorar()
-	recuerdosViejos()
-	cuantasVecesRecuerda(unRecuerdo)
-	tieneUnDejaVu()
+  vivirUnEvento(unaDescripcion)
+  asentar(unRecuerdo)
+  estaFeliz()
+  centralizar(unRecuerdo)
+  entristecerEnProporcion(unPorcentaje)
+  recuerdosRecientes()
+  pensamientosCentralesDificilesDeExplicar()
+  niega(unRecuerdo)
+  dormir()
+  asentarRecuerdos(unosRecuerdos)
+  recuerdosDelDiaQueIncluyen(unaPalabra)
+  memorizar(unosRecuerdos)
+  profundizarRecuerdos()
+  recuerdosMemorizables()
+  recuerdosNoCentralesDelDia()
+  estaDesequilibrada()
+  estaRecordandoElPasado()
+  tuvoDiaMonotono()
+  emocionDelDia()
+  producirDesequilibrioHormonal()
+  pensamientosCentralesPorAntiguedad()
+  alegrar(unaCantidad)
+  liberarRecuerdosDelDia()
+  rememorar()
+  recuerdosViejos()
+  cuantasVecesRecuerda(unRecuerdo)
+  tieneUnDejaVu()
 }
 
 class Evento {
-	descripcion
-	fecha
-	emocionDominante
+  descripcion
+  fecha
+  emocionDominante
 
-	asentarEn(unaChica)
-	esDificilDeExplicar()
-	esAlegre()
-	incluye(unaPalabra)
-	esDeEmocion(unaEmocion)
-	esMasAntiguoQue(otroEvento)
-	pasoDespuesDe(unaFecha)
-	pasoHaceMasDeNAnios(unosAnios)
+  asentarEn(unaChica)
+  esDificilDeExplicar()
+  esAlegre()
+  incluye(unaPalabra)
+  esDeEmocion(unaEmocion)
+  esMasAntiguoQue(otroEvento)
+  pasoDespuesDe(unaFecha)
+  pasoHaceMasDeNAnios(unosAnios)
 }
 
 interface Emocion {
-	asentar(unRecuerdo, unaChica)
-	niega(unRecuerdo)
+  asentar(unRecuerdo, unaChica)
+  niega(unRecuerdo)
   esAlegre()
 }
 
 object alegria {
-	asentar(unRecuerdo, unaChica)
-	niega(unRecuerdo)
-	esAlegre()
+  asentar(unRecuerdo, unaChica)
+  niega(unRecuerdo)
+  esAlegre()
 }
 
 class EmocionCompuesta implements Emocion {
   componentes
 
-	asentar(unRecuerdo, unaChica)
-	niega(unRecuerdo)
+  asentar(unRecuerdo, unaChica)
+  niega(unRecuerdo)
   esAlegre()
 }
 
@@ -83,39 +83,39 @@ abstract class EmocionNoAlegre implements Emocion {
 }
 
 object tristeza {
-	asentar(unRecuerdo, unaChica)
-	niega(unRecuerdo)
+  asentar(unRecuerdo, unaChica)
+  niega(unRecuerdo)
 }
 
 object asentamiento {
-	recuerdosAAsentar(unaChica)
+  recuerdosAAsentar(unaChica)
 }
 
 class AsentamientoSelectivo extends ProcesoDeAsentamiento {
   palabraClave
 
-	recuerdosAAsentar(unaChica)
+  recuerdosAAsentar(unaChica)
 }
 
 object controlHormonal {
-	efectuarSobre(unaChica)
+  efectuarSobre(unaChica)
 }
 
 object liberacionDeRecuerdosDelDia {
-	efectuarSobre(unaChica)
+  efectuarSobre(unaChica)
 }
 
 abstract class ProcesoDeAsentamiento implements ProcesoMental {
-	efectuarSobre(unaChica)
-	{abstract} recuerdosAAsentar(unaChica)
+  efectuarSobre(unaChica)
+  {abstract} recuerdosAAsentar(unaChica)
 }
 
 object profundizacion {
-	efectuarSobre(unaChica)
+  efectuarSobre(unaChica)
 }
 
 object restauracionCognitiva {
-	efectuarSobre(unaChica)
+  efectuarSobre(unaChica)
 }
 
 interface ProcesoMental {
